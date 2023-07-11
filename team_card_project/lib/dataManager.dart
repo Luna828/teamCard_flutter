@@ -18,10 +18,31 @@ class Data {
   String mbti;
   String tmi;
   String comment;
+
+  Map toJson() {
+    return {
+      'name': name,
+      'imgUrl': imgUrl,
+      'mbti': mbti,
+      'tmi': tmi,
+      'comment': comment,
+    };
+  }
+
+  factory Data.fromJson(json) {
+    return Data(
+        name: json['name'],
+        imgUrl: json['imgUrl'],
+        mbti: json['mbti'],
+        tmi: json['tmi'],
+        comment: json['comment']);
+  }
 }
 
 class DataManager extends ChangeNotifier {
-  DataManager() {}
+  DataManager() {
+    loadDataList();
+  }
 
   List<Data> dataList = [
     Data(imgUrl: "", name: "김은경", mbti: "", comment: "", tmi: ""),
@@ -44,7 +65,7 @@ class DataManager extends ChangeNotifier {
     }
 
     notifyListeners();
-    saveMemoList();
+    saveDataList();
   }
 
   updateComment({required int index, required String comment}) {
@@ -54,7 +75,7 @@ class DataManager extends ChangeNotifier {
     }
 
     notifyListeners();
-    saveMemoList();
+    saveDataList();
   }
 
   updateTmi({required int index, required String tmi}) {
@@ -64,10 +85,24 @@ class DataManager extends ChangeNotifier {
     }
 
     notifyListeners();
-    saveMemoList();
+    saveDataList();
   }
 
-  saveMemoList() async {}
+  saveDataList() {
+    List memoJsonList = dataList.map((data) => data.toJson()).toList();
 
-  loadDataList() {}
+    String jsonString = jsonEncode(memoJsonList);
+
+    prefs.setString('dataList', jsonString);
+  }
+
+  loadDataList() {
+    String? jsonString = prefs.getString('dataList');
+
+    if (jsonString == null) return;
+
+    List dataJsonList = jsonDecode(jsonString);
+
+    dataList = dataJsonList.map((json) => Data.fromJson(json)).toList();
+  }
 }
