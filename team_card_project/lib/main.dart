@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:team_card_project/DaeHyun.dart';
 import 'package:team_card_project/JunYoung.dart';
 import 'package:team_card_project/EunKyoung.dart';
 import 'GyuYeon.dart';
 import "dataManager.dart";
+import 'DaeHyun.dart';
 
 late SharedPreferences prefs;
 
@@ -116,10 +118,17 @@ class HomePage extends StatelessWidget {
               height: 12,
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DaeHyun(),
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                     fixedSize: const Size(250, 50),
-                    backgroundColor: Colors.cyanAccent[100]),
+                    backgroundColor: Colors.blue[100]),
                 child: Text(
                   '이대현',
                   style: TextStyle(color: Colors.black),
