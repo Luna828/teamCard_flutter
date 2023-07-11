@@ -116,6 +116,8 @@
     * [MERGE] : 병합
     * [CONFLICT]: 병합 시 충돌 해결
     * [COMPLETION]: 작업을 완료하고 마지막 커밋을 작성하는 경우 
+    
+- Pull Requests는 `Commit Message`와 동일하게 써서 올립니다.
 
 ### Color Scheme 
 - Color는 개인의 취향에 맞게 각자의 개성에 따라 색을 다르게 하기로 결정
