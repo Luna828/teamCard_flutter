@@ -140,4 +140,7 @@
 ![](https://flutter.github.io/assets-for-api-docs/assets/material/Colors.lightGreen.png)
   
 
-
+## :fire: 프로젝트 주요 관심사
+:heavy_check_mark: Slack 과 Notion을 이용하여 소통에 문제가 발생하지 않도록 노력하고 있습니다. 
+</br>:heavy_check_mark: 팀의 규칙을 정하여 잘 숙지하고 역할 분담을 통해 팀원들과의 소통을 중요시 여기고 있습니다.
+</br>:heavy_check_mark: 협업과 더불어 개인이 flutter를 사용하여 다시 배운 내용을 복습하는 시간을 가지고 있습니다.
