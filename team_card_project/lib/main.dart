@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:team_card_project/EunKyoung.dart';
 import 'GyuYeon.dart';
 
 late SharedPreferences prefs;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   prefs = await SharedPreferences.getInstance();
@@ -14,6 +16,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -45,6 +48,7 @@ class MyApp extends StatelessWidget {
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +72,12 @@ class HomePage extends StatelessWidget {
               height: 10,
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => EunKyoungCardPage()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                     fixedSize: const Size(250, 50),
                     backgroundColor: Colors.pink[100]),
@@ -153,6 +162,7 @@ class CorrectionPage extends StatelessWidget {
   CorrectionPage({
     super.key,
   });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
