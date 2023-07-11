@@ -1,14 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:team_card_project/JunYoung.dart';
+
 import 'GyuYeon.dart';
+import "dataManager.dart";
 
 late SharedPreferences prefs;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   prefs = await SharedPreferences.getInstance();
   runApp(
-    const MyApp(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => DataManager()),
+      ],
+      child: const MyApp(),
+    ),
   );
 }
 
@@ -62,8 +72,12 @@ class HomePage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => GyuYeon()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => JunyoungPage(
+                                index: 3,
+                              )));
                 },
                 style: ElevatedButton.styleFrom(
                     fixedSize: const Size(250, 50),
