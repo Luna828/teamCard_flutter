@@ -16,64 +16,69 @@ class _EunKyoungCardPageState extends State<EunKyoungCardPage> {
     const String TMI = "TMI";
     const String IN_SHORT = "한 마디";
 
+    ScrollController scrollController = ScrollController();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("김은경"),
         centerTitle: true,
         backgroundColor: Colors.pink[100],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: Center(
-              child: Container(
-                height: 200,
-                width: 200,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(300),
-                  child: Image.network(
-                    "https://avatars.githubusercontent.com/u/93186591?v=4",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 30),
-          const Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              MBTI,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-            ),
-          ),
-          myListTile("ISFJ", context),
-          const SizedBox(height: 20),
-          const Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              TMI,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-            ),
-          ),
-          myListTile("저는 중국에서 스페인어과를 졸업하고 개발시장에 뛰어든 비전공자 입니다! 잘 부탁드려요!", context),
-          const SizedBox(height: 20),
-          const Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              IN_SHORT,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-            ),
-          ),
-          myListTile(
-              "안녕하세요, 이번 iOS_7기로 합류하게 된 김은경이라고합니다. 4개월동안 취뽀를 위해서 함께 노력해봐요!", context),
-        ],
+      body: SingleChildScrollView(
+        controller: scrollController,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            //이미지 사진 넣는 부분
+            myImage("https://avatars.githubusercontent.com/u/93186591?v=4"),
+            listTilePadding(MBTI),
+            myListTile("ISFJ", context),
+            listTilePadding(TMI),
+            myListTile("저는 중국에서 스페인어과를 중국어 중ㄱ국어 ㅇㅇㅇㅇㅇ졸업하고 개발시장에 뛰어든 비전공자 입니다! 잘 부탁드려요!", context),
+            listTilePadding(IN_SHORT),
+            myListTile(
+                "dddddddddddddddddd안녕하세요,dddddddddddd dddddddddddddddddddddddd이번 iOS_7기로 합류하게 된 김은경이라고합니다. 4개월동안 취뽀를 위해서 함께 노력해봐요!", context),
+          ],
+        ),
       ),
     );
   }
+}
+
+
+Widget myImage(String image){
+  return Padding(
+    padding: const EdgeInsets.only(top: 20.0),
+    child: Center(
+      child: Container(
+        height: 200,
+        width: 200,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(300),
+          child: Image.network(
+            image,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget listTilePadding(String title){
+  return Column(
+    children: [
+      const SizedBox(height: 20),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Text(
+          title!,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+      ),
+    ]
+  );
 }
 
 Widget myListTile(String content, BuildContext context) {
