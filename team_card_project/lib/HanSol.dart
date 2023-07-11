@@ -48,7 +48,7 @@ class _HanSolState extends State<HanSol> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
-              title: Text('ISTP'),
+              title: Text('INFJ'),
               trailing: IconButton(
                   onPressed: () {
                     Navigator.push(context,
@@ -72,7 +72,7 @@ class _HanSolState extends State<HanSol> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
-              title: Text('노래, 게임 좋아함'),
+              title: Text('피아노 치는걸 좋아합니다!'),
               trailing: IconButton(
                   onPressed: () {
                     Navigator.push(context,
@@ -96,7 +96,7 @@ class _HanSolState extends State<HanSol> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
-              title: Text('열심히 공부해봅시다!'),
+              title: Text('모두들 화이팅합시다~~'),
               trailing: IconButton(
                   onPressed: () {
                     Navigator.push(context,
