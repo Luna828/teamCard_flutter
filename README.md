@@ -63,7 +63,21 @@
        <img src="https://avatars.githubusercontent.com/u/137505484?v=4" width="100px;" alt="조규연"/>
        <br />
          <sub>
-           <b>Alpaca38</b>
+           <b>조규연</b>
+         </sub>
+       </a>
+       <br />
+       <sub>
+           <b>Flutter Developer</b>
+       </sub>
+       <br />
+    </td>
+    <td align="center" valign="top" width="14.28%">
+       <a href="https://github.com/jamie615">
+       <img src="https://avatars.githubusercontent.com/u/60419257?v=4" width="100px;" alt="조규연"/>
+       <br />
+         <sub>
+           <b>정다솔</b>
          </sub>
        </a>
        <br />
@@ -78,11 +92,17 @@
 ### Projects
 - Flutter로 팀 구성원 카드 만들기
     - 아래의 이미지와 같이 3가지의 UI 화면으로 구성합니다 <br> 
-    (https://files.slack.com/files-tmb/T043597JK8V-F05GM8K75MF-1469450eda/image_720.png)<br>
-    - 와이어 프레임<br>
-    (https://files.slack.com/files-tmb/T043597JK8V-F05G8L0QSTV-9695f9e9b7/img_5383_720.jpg)<br>
-    (https://files.slack.com/files-tmb/T043597JK8V-F05G8L0QS4B-9871717525/img_5384_720.jpg)<br>
-    (https://files.slack.com/files-tmb/T043597JK8V-F05G8L0QS59-7694fe0ffc/img_5385_720.jpg)
+    <img src="/images/image.png" width="1000" height="400" />
+    
+    - 와이어 프레임
+    <table>
+      <tr>
+        <td><img src="/images/IMG_5383" width="300" height="300" /></td>
+        <td><img src="/images/IMG_5384" width="300" height="300"/></td>
+        <td><img src="/images/IMG_5385" width="300" height="300"/></td>
+      <tr>
+    </table>
+
 
 ### Git Conventions
 - Commit Message는 아래와 같은 규칙을 따릅니다.
