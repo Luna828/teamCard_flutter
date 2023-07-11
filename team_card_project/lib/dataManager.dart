@@ -46,7 +46,12 @@ class DataManager extends ChangeNotifier {
 
   List<Data> dataList = [
     Data(imgUrl: "", name: "김은경", mbti: "", comment: "", tmi: ""),
-    Data(imgUrl: "", name: "조규연", mbti: "", comment: "", tmi: ""),
+    Data(
+        imgUrl: "",
+        name: "조규연",
+        mbti: "ISTP",
+        comment: "열심히 공부해봅시다!",
+        tmi: "노래, 게임 좋아합니다."),
     Data(imgUrl: "", name: "이한솔", mbti: "", comment: "", tmi: ""),
     Data(
         imgUrl: 'https://i.postimg.cc/qqFpMbLP/DSC-1658.jpg',
