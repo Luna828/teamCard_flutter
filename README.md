@@ -97,9 +97,9 @@
     - 와이어 프레임
     <table>
       <tr>
-        <td><img src="/images/IMG_5383" width="300" height="300" /></td>
-        <td><img src="/images/IMG_5384" width="300" height="300"/></td>
-        <td><img src="/images/IMG_5385" width="300" height="300"/></td>
+        <td><img src="/images/IMG_5383.jpg" width="300" height="300" /></td>
+        <td><img src="/images/IMG_5384.jpg" width="300" height="300"/></td>
+        <td><img src="/images/IMG_5385.jpg" width="300" height="300"/></td>
       <tr>
     </table>
 
