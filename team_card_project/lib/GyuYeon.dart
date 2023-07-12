@@ -23,7 +23,7 @@ class _GyuYeonState extends State<GyuYeon> {
   @override
   Widget build(BuildContext context) {
     DataManager dataManager = context.read<DataManager>();
-    Data data = dataManager.dataList[widget.index];
+    Data data = dataManager.dataList[INDEX];
     return Consumer<DataManager>(builder: (context, dataManager, child) {
       List<Data> dataList = dataManager.dataList;
       return Scaffold(
@@ -41,12 +41,15 @@ class _GyuYeonState extends State<GyuYeon> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(300.0),
-                  child: Container(
-                    child: Image.network(data.imgUrl),
-                    height: 200,
-                    width: 200,
+                Container(
+                  height: 200,
+                  width: 200,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(300),
+                    child: Image.network(
+                      data.imgUrl,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ],
@@ -62,7 +65,7 @@ class _GyuYeonState extends State<GyuYeon> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
-                title: Text(dataList[INDEX].mbti),
+                title: Text(data.mbti),
                 trailing: IconButton(
                     onPressed: () {
                       Navigator.push(
@@ -90,7 +93,7 @@ class _GyuYeonState extends State<GyuYeon> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
-                title: Text(dataList[INDEX].tmi),
+                title: Text(data.tmi),
                 trailing: IconButton(
                     onPressed: () {
                       Navigator.push(
@@ -118,7 +121,7 @@ class _GyuYeonState extends State<GyuYeon> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
-                title: Text(dataList[INDEX].comment),
+                title: Text(data.comment),
                 trailing: IconButton(
                     onPressed: () {
                       Navigator.push(
@@ -158,7 +161,7 @@ class GyuYeonCorrection extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green[600],
+        backgroundColor: Colors.tealAccent[100],
         actions: [
           IconButton(
             onPressed: () {
