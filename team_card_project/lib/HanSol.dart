@@ -28,12 +28,15 @@ class _HanSolState extends State<HanSol> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 200,
                 height: 200,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image:
-                        DecorationImage(image: AssetImage('assets/image.png'))),
+                width: 200,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(300),
+                  child: Image.network(
+                    "https://avatars.githubusercontent.com/u/139109343?v=4",
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ],
           ),

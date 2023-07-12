@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 import 'main.dart';
@@ -46,7 +45,13 @@ class DataManager extends ChangeNotifier {
 
   List<Data> dataList = [
     Data(imgUrl: "https://avatars.githubusercontent.com/u/93186591?v=4", name: "김은경", mbti: "ISFJ", comment: "잘부탁드려요", tmi: "잠을 두시간 자서 죽겠어요.."),
-    Data(imgUrl: "", name: "조규연", mbti: "", comment: "", tmi: ""),
+    Data(
+        imgUrl:
+            'https://i.postimg.cc/VLZxYVfQ/729-CE27-A-F153-4-F82-A0-AA-5710-ED969-B4-D.jpg',
+        name: "조규연",
+        mbti: "ISTP",
+        comment: "열심히 공부해봅시다!",
+        tmi: "노래, 게임 좋아합니다."),
     Data(imgUrl: "", name: "이한솔", mbti: "", comment: "", tmi: ""),
     Data(
         imgUrl: 'https://i.postimg.cc/qqFpMbLP/DSC-1658.jpg',
