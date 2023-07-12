@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:team_card_project/DaeHyun.dart';
+import 'package:team_card_project/HanSol.dart';
 import 'package:team_card_project/JunYoung.dart';
-import 'package:team_card_project/EunKyoung.dart';
+import 'package:team_card_project/eunkyoung/EunKyoung.dart';
 import 'GyuYeon.dart';
 import "dataManager.dart";
 
@@ -25,11 +27,15 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
       home: HomePage(),
     );
   }
@@ -64,7 +70,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => EunKyoungCardPage()),
+                    MaterialPageRoute(builder: (_) => EunKyoungCardPage(index: 0)),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -97,10 +103,17 @@ class HomePage extends StatelessWidget {
               height: 12,
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DaeHyun(),
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                     fixedSize: const Size(250, 50),
-                    backgroundColor: Colors.cyanAccent[100]),
+                    backgroundColor: Colors.blue[100]),
                 child: Text(
                   '이대현',
                   style: TextStyle(color: Colors.black),
@@ -109,7 +122,10 @@ class HomePage extends StatelessWidget {
               height: 12,
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => HanSol()));
+                },
                 style: ElevatedButton.styleFrom(
                     fixedSize: const Size(250, 50),
                     backgroundColor: Colors.amber[200]),
