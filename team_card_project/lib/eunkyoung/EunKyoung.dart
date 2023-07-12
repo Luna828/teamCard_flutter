@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:team_card_project/dataManager.dart';
 
-import 'main.dart';
+import 'eunKyoung_detail.dart';
 
 class EunKyoungCardPage extends StatefulWidget {
   EunKyoungCardPage({super.key, required this.index});
@@ -27,7 +27,7 @@ class _EunKyoungCardPageState extends State<EunKyoungCardPage> {
   Widget build(BuildContext context) {
     const String MBTI = "MBTI";
     const String TMI = "TMI";
-    const String IN_SHORT = "한 마디";
+    const String COMMENT = "한 마디";
 
     ScrollController scrollController = ScrollController();
 
@@ -49,11 +49,11 @@ class _EunKyoungCardPageState extends State<EunKyoungCardPage> {
                 //이미지 사진 넣는 부분
                 myImage(data.imgUrl),
                 listTilePadding(MBTI),
-                myListTile(data.mbti, context),
+                myListTile(data.mbti, context, index, dataManager.dataList[index].mbti),
                 listTilePadding(TMI),
-                myListTile(data.tmi, context),
-                listTilePadding(IN_SHORT),
-                myListTile(data.comment, context),
+                myListTile(data.tmi, context, index, dataManager.dataList[index].tmi),
+                listTilePadding(COMMENT),
+                myListTile(data.comment, context, index, dataManager.dataList[index].comment),
               ],
             ),
           ),
@@ -98,7 +98,7 @@ Widget listTilePadding(String title){
   );
 }
 
-Widget myListTile(String content, BuildContext context) {
+Widget myListTile(String content, BuildContext context, int index, String hintText) {
   return Padding(
     padding: const EdgeInsets.all(8),
     child: ListTile(
@@ -112,10 +112,11 @@ Widget myListTile(String content, BuildContext context) {
         iconSize: 30,
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (_) => CorrectionPage()));
+              context, MaterialPageRoute(builder: (_) => EunKyoungDetailPage(index: index, hintText: hintText)));
         },
         color: Colors.black,
       ),
     ),
   );
 }
+

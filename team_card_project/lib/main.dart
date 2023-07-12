@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:team_card_project/DaeHyun.dart';
 import 'package:team_card_project/JunYoung.dart';
-import 'package:team_card_project/EunKyoung.dart';
+import 'package:team_card_project/eunkyoung/EunKyoung.dart';
 import 'GyuYeon.dart';
 import "dataManager.dart";
 
