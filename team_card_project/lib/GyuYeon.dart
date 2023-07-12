@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dataManager.dart';
-import 'main.dart';
 
 const int TYPE_MBTI = 0;
 const int TYPE_TMI = 1;
@@ -23,9 +21,9 @@ class _GyuYeonState extends State<GyuYeon> {
   @override
   Widget build(BuildContext context) {
     DataManager dataManager = context.read<DataManager>();
-    Data data = dataManager.dataList[INDEX];
+    Data data = dataManager.dataList[widget.index];
+    ScrollController scrollController = ScrollController();
     return Consumer<DataManager>(builder: (context, dataManager, child) {
-      List<Data> dataList = dataManager.dataList;
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.tealAccent[100],
@@ -34,113 +32,119 @@ class _GyuYeonState extends State<GyuYeon> {
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 200,
-                  width: 200,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(300),
-                    child: Image.network(
-                      'https://i.postimg.cc/VLZxYVfQ/729-CE27-A-F153-4-F82-A0-AA-5710-ED969-B4-D.jpg',
-                      fit: BoxFit.cover,
+        body: SingleChildScrollView(
+          controller: scrollController,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30.0),
+                    child: Container(
+                      height: 200,
+                      width: 200,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(300),
+                        child: Image.network(
+                          data.imgUrl,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Text(
-                'MBTI',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ],
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                title: Text(data.mbti),
-                trailing: IconButton(
-                    onPressed: () {
-                      Navigator.push(
+              SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  'MBTI',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  title: Text(data.mbti),
+                  trailing: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => GyuYeonCorrection(
+                                      type: TYPE_MBTI,
+                                    )));
+                      },
+                      icon: Icon(Icons.edit)),
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.black, width: 1),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  'TMI',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  title: Text(data.tmi),
+                  trailing: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => GyuYeonCorrection(
+                                      type: TYPE_TMI,
+                                    )));
+                      },
+                      icon: Icon(Icons.edit)),
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.black, width: 1),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  '한 마디',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  title: Text(data.comment),
+                  trailing: IconButton(
+                      onPressed: () {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (_) => GyuYeonCorrection(
-                                    type: TYPE_MBTI,
-                                  )));
-                    },
-                    icon: Icon(Icons.edit)),
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.black, width: 1),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Text(
-                'TMI',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                title: Text(data.tmi),
-                trailing: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => GyuYeonCorrection(
-                                    type: TYPE_TMI,
-                                  )));
-                    },
-                    icon: Icon(Icons.edit)),
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.black, width: 1),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Text(
-                '한 마디',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                title: Text(data.comment),
-                trailing: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => GyuYeonCorrection(
-                            type: TYPE_ETC,
+                            builder: (_) => GyuYeonCorrection(
+                              type: TYPE_ETC,
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    icon: Icon(Icons.edit)),
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.black, width: 1),
-                  borderRadius: BorderRadius.circular(10.0),
+                        );
+                      },
+                      icon: Icon(Icons.edit)),
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.black, width: 1),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
     });
