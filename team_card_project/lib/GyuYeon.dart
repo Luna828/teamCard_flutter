@@ -47,7 +47,7 @@ class _GyuYeonState extends State<GyuYeon> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(300),
                     child: Image.network(
-                      data.imgUrl,
+                      'https://i.postimg.cc/VLZxYVfQ/729-CE27-A-F153-4-F82-A0-AA-5710-ED969-B4-D.jpg',
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -158,6 +158,12 @@ class GyuYeonCorrection extends StatelessWidget {
   Widget build(BuildContext context) {
     DataManager dataManager = context.read<DataManager>();
     String word = "";
+    Data data = dataManager.dataList[INDEX];
+    contentController.text = type == TYPE_MBTI
+        ? data.mbti
+        : type == TYPE_TMI
+            ? data.tmi
+            : data.comment;
 
     return Scaffold(
       appBar: AppBar(
