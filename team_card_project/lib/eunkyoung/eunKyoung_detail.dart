@@ -22,9 +22,15 @@ class _EunKyoungDetailPageState extends State<EunKyoungDetailPage> {
   @override
   Widget build(BuildContext context) {
     TextEditingController contentController = TextEditingController();
-
     DataManager dataManager = context.read();
-    String word = contentController.text;
+    //onChanged 에 잠시 넣어둘 값들
+    String word = "";
+
+    contentController.text = widget.type == "MBTI"
+        ? dataManager.dataList[widget.index].mbti
+        : widget.type == "TMI"
+            ? dataManager.dataList[widget.index].tmi
+            : dataManager.dataList[widget.index].comment;
 
     return Scaffold(
       appBar: AppBar(
