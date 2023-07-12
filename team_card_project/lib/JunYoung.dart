@@ -11,11 +11,13 @@ class JunyoungPage extends StatelessWidget {
   JunyoungPage({super.key, required this.index});
 
   int index;
+  var appBarColor = Colors.green[600];
 
   @override
   Widget build(BuildContext context) {
     DataManager dataManager = context.read<DataManager>();
     Data data = dataManager.dataList[index];
+    ScrollController scrollController = ScrollController();
     double boxSize = 20.0;
 
     return Consumer<DataManager>(
@@ -23,28 +25,33 @@ class JunyoungPage extends StatelessWidget {
         List<Data> dataList = dataManager.dataList;
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.green[600],
+            backgroundColor: appBarColor,
             title: Text(data.name),
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                imageView(data.imgUrl),
-                SizedBox(height: 20),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    listTitle("MBTI"),
-                    listContent(data.mbti, context, "MBTI", index),
-                    listTitle("TMi"),
-                    listContent(data.tmi, context, "TMI", index),
-                    listTitle("한마디"),
-                    listContent(data.comment, context, "한마디", index),
-                  ],
-                ),
-              ],
+          body: SingleChildScrollView(
+            controller: scrollController,
+            child: Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  imageView(data.imgUrl),
+                  SizedBox(height: 20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      listTitle("MBTI"),
+                      listContent(
+                          data.mbti, context, "MBTI", index, appBarColor),
+                      listTitle("TMi"),
+                      listContent(data.tmi, context, "TMI", index, appBarColor),
+                      listTitle("한마디"),
+                      listContent(
+                          data.comment, context, "한마디", index, appBarColor),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         );
@@ -82,7 +89,8 @@ Widget listTitle(String type) {
   );
 }
 
-Widget listContent(String content, BuildContext context, String type, int idx) {
+Widget listContent(String content, BuildContext context, String type, int idx,
+    Color? appBarColor) {
   return Padding(
     padding: const EdgeInsets.all(8),
     child: ListTile(
@@ -101,6 +109,7 @@ Widget listContent(String content, BuildContext context, String type, int idx) {
               builder: (_) => JunYoungDetail(
                 index: idx,
                 type: type,
+                appBarColor: appBarColor,
               ),
             ),
           );
@@ -112,10 +121,15 @@ Widget listContent(String content, BuildContext context, String type, int idx) {
 }
 
 class JunYoungDetail extends StatelessWidget {
-  JunYoungDetail({super.key, required this.index, required this.type});
+  JunYoungDetail(
+      {super.key,
+      required this.index,
+      required this.type,
+      required this.appBarColor});
 
   final int index;
   String type;
+  Color? appBarColor;
 
   TextEditingController contentController = TextEditingController();
 
@@ -127,7 +141,7 @@ class JunYoungDetail extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green[600],
+        backgroundColor: appBarColor,
         actions: [
           IconButton(
             onPressed: () {
