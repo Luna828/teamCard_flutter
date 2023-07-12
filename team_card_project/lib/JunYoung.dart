@@ -31,94 +31,18 @@ class JunyoungPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                imageView(data.imgUrl),
+                SizedBox(height: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(300.0),
-                      child: Container(
-                        child: Image.network(data.imgUrl),
-                        height: 200,
-                        width: 200,
-                      ),
-                    ),
+                    listTitle("MBTI"),
+                    listContent(data.mbti, context, "MBTI", index),
+                    listTitle("TMi"),
+                    listContent(data.tmi, context, "TMI", index),
+                    listTitle("한마디"),
+                    listContent(data.comment, context, "한마디", index),
                   ],
-                ),
-                SizedBox(height: 100), //중간 여백
-                Container(
-                  height: 300,
-                  child: ListView.builder(
-                    itemCount: 3,
-                    itemBuilder: (BuildContext context, int idx) {
-                      return Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                idx == 0
-                                    ? "MBTI"
-                                    : idx == 1
-                                        ? "TMI"
-                                        : "한마디",
-                                style: TextStyle(
-                                    fontSize: 30, fontWeight: FontWeight.bold),
-                              ),
-                              Container(
-                                height: 50,
-                                width: 300,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.green),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Text(
-                                  idx == 0
-                                      ? data.mbti
-                                      : idx == 1
-                                          ? data.tmi
-                                          : data.comment,
-                                  style: TextStyle(fontSize: 25),
-                                ),
-                              )
-                            ],
-                          ),
-                          SizedBox(width: 20),
-                          Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.green),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Column(
-                              children: [
-                                IconButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (_) => JunYoungDetail(
-                                              index: index,
-                                              type: idx == 0
-                                                  ? "MBTI"
-                                                  : idx == 1
-                                                      ? "TMI"
-                                                      : "한마디"),
-                                        ),
-                                      );
-                                    },
-                                    icon: Icon(
-                                      Icons.edit,
-                                      size: 30,
-                                    )),
-                              ],
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
                 ),
               ],
             ),
@@ -127,6 +51,64 @@ class JunyoungPage extends StatelessWidget {
       },
     );
   }
+}
+
+Widget imageView(String imgUrl) {
+  return Padding(
+    padding: const EdgeInsets.only(top: 20.0),
+    child: Center(
+      child: Container(
+        height: 200,
+        width: 200,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(300),
+          child: Image.network(
+            imgUrl,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget listTitle(String type) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 10),
+    child: Text(
+      type,
+      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+    ),
+  );
+}
+
+Widget listContent(String content, BuildContext context, String type, int idx) {
+  return Padding(
+    padding: const EdgeInsets.all(8),
+    child: ListTile(
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(color: Colors.black, width: 1),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      title: Text(content),
+      trailing: IconButton(
+        icon: const Icon(Icons.edit),
+        iconSize: 30,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => JunYoungDetail(
+                index: idx,
+                type: type,
+              ),
+            ),
+          );
+        },
+        color: Colors.black,
+      ),
+    ),
+  );
 }
 
 class JunYoungDetail extends StatelessWidget {
