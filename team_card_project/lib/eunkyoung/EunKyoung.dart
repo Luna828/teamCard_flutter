@@ -47,14 +47,27 @@ class _EunKyoungCardPageState extends State<EunKyoungCardPage> {
               //이미지 사진 넣는 부분
               myImage(data.imgUrl),
               listTilePadding(MBTI),
-              myListTile(data.mbti, context, index,
-                  dataManager.dataList[index].mbti, () {}),
+              myListTile(
+                  data.mbti, 
+                  context, index,
+                  dataManager.dataList[index].mbti,
+                  MBTI,
+              ),
               listTilePadding(TMI),
               myListTile(
-                  data.tmi, context, index, dataManager.dataList[index].tmi),
+                  data.tmi, 
+                  context, index, 
+                  dataManager.dataList[index].tmi,
+                  TMI,
+              ),
               listTilePadding(COMMENT),
-              myListTile(data.comment, context, index,
-                  dataManager.dataList[index].comment),
+              myListTile(
+                  data.comment, 
+                  context, 
+                  index,
+                  dataManager.dataList[index].comment,
+                  COMMENT,
+              ),
             ],
           ),
         ),
@@ -96,7 +109,7 @@ Widget listTilePadding(String title) {
 }
 
 Widget myListTile(String content, BuildContext context, int index,
-    String hintText, Function() onPressed) {
+    String hintText, String type) {
   return Padding(
     padding: const EdgeInsets.all(8),
     child: ListTile(
@@ -115,7 +128,7 @@ Widget myListTile(String content, BuildContext context, int index,
               builder: (_) => EunKyoungDetailPage(
                 index: index,
                 hintText: hintText,
-                onPressed: onPressed,
+                type: type,
               ),
             ),
           );

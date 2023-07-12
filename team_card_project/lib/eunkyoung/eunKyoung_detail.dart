@@ -7,12 +7,12 @@ class EunKyoungDetailPage extends StatefulWidget {
   super.key,
       required this.index,
       required this.hintText,
-      required this.onPressed,
+      required this.type,
       });
 
   late int index;
+  String type;
   late String hintText;
-  Function() onPressed;
 
   @override
   State<EunKyoungDetailPage> createState() => _EunKyoungDetailPageState();
@@ -21,20 +21,25 @@ class EunKyoungDetailPage extends StatefulWidget {
 class _EunKyoungDetailPageState extends State<EunKyoungDetailPage> {
   @override
   Widget build(BuildContext context) {
-    DataManager dataManager = context.read<DataManager>();
-
     TextEditingController contentController = TextEditingController();
+
+    DataManager dataManager = context.read();
+    String word = contentController.text;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          '수정하기',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
         backgroundColor: Colors.pink[100],
         actions: [
           ElevatedButton(
             onPressed: (){
-              widget.onPressed;
+              if(widget.type == "MBTI"){
+                dataManager.updateMbti(index: widget.index, mbti: word);
+              } else if(widget.type == "TMI") {
+                dataManager.updateTmi(index: widget.index, tmi: word);
+              } else {
+                dataManager.updateComment(index: widget.index, comment: word);
+              }
+              Navigator.pop(context);
             },
             style: ElevatedButton.styleFrom(
               elevation: 0,
@@ -55,6 +60,9 @@ class _EunKyoungDetailPageState extends State<EunKyoungDetailPage> {
           expands: true,
           maxLines: null,
           keyboardType: TextInputType.multiline,
+          onChanged: (val) {
+            word = val;
+          },
         ),
       ),
     );
