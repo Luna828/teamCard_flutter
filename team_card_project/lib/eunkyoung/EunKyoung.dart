@@ -14,7 +14,6 @@ class EunKyoungCardPage extends StatefulWidget {
 }
 
 class _EunKyoungCardPageState extends State<EunKyoungCardPage> {
-
   late int index;
 
   @override
@@ -31,40 +30,40 @@ class _EunKyoungCardPageState extends State<EunKyoungCardPage> {
 
     ScrollController scrollController = ScrollController();
 
-    return Consumer<DataManager>(
-      builder: (context, dataManager, child) {
-        Data data = dataManager.dataList[index];
-        return Scaffold(
-          appBar: AppBar(
-            title: Text("김은경"),
-            centerTitle: true,
-            backgroundColor: Colors.pink[100],
+    return Consumer<DataManager>(builder: (context, dataManager, child) {
+      Data data = dataManager.dataList[index];
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("김은경"),
+          centerTitle: true,
+          backgroundColor: Colors.pink[100],
+        ),
+        body: SingleChildScrollView(
+          controller: scrollController,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //이미지 사진 넣는 부분
+              myImage(data.imgUrl),
+              listTilePadding(MBTI),
+              myListTile(data.mbti, context, index,
+                  dataManager.dataList[index].mbti, () {}),
+              listTilePadding(TMI),
+              myListTile(
+                  data.tmi, context, index, dataManager.dataList[index].tmi),
+              listTilePadding(COMMENT),
+              myListTile(data.comment, context, index,
+                  dataManager.dataList[index].comment),
+            ],
           ),
-          body: SingleChildScrollView(
-            controller: scrollController,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //이미지 사진 넣는 부분
-                myImage(data.imgUrl),
-                listTilePadding(MBTI),
-                myListTile(data.mbti, context, index, dataManager.dataList[index].mbti),
-                listTilePadding(TMI),
-                myListTile(data.tmi, context, index, dataManager.dataList[index].tmi),
-                listTilePadding(COMMENT),
-                myListTile(data.comment, context, index, dataManager.dataList[index].comment),
-              ],
-            ),
-          ),
-        );
-      }
-    );
+        ),
+      );
+    });
   }
 }
 
-
-Widget myImage(String image){
+Widget myImage(String image) {
   return Padding(
     padding: const EdgeInsets.only(top: 20.0),
     child: Center(
@@ -83,22 +82,21 @@ Widget myImage(String image){
   );
 }
 
-Widget listTilePadding(String title){
-  return Column(
-    children: [
-      const SizedBox(height: 20),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Text(
-          title!,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-        ),
+Widget listTilePadding(String title) {
+  return Column(children: [
+    const SizedBox(height: 20),
+    Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Text(
+        title!,
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
       ),
-    ]
-  );
+    ),
+  ]);
 }
 
-Widget myListTile(String content, BuildContext context, int index, String hintText) {
+Widget myListTile(String content, BuildContext context, int index,
+    String hintText, Function() onPressed) {
   return Padding(
     padding: const EdgeInsets.all(8),
     child: ListTile(
@@ -112,11 +110,18 @@ Widget myListTile(String content, BuildContext context, int index, String hintTe
         iconSize: 30,
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (_) => EunKyoungDetailPage(index: index, hintText: hintText)));
+            context,
+            MaterialPageRoute(
+              builder: (_) => EunKyoungDetailPage(
+                index: index,
+                hintText: hintText,
+                onPressed: onPressed,
+              ),
+            ),
+          );
         },
         color: Colors.black,
       ),
     ),
   );
 }
-

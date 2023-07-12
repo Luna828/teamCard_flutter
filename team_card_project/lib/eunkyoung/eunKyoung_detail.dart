@@ -3,13 +3,16 @@ import 'package:provider/provider.dart';
 import 'package:team_card_project/dataManager.dart';
 
 class EunKyoungDetailPage extends StatefulWidget {
-  EunKyoungDetailPage(
-      {super.key,
+  EunKyoungDetailPage({
+  super.key,
       required this.index,
-      required this.hintText});
+      required this.hintText,
+      required this.onPressed,
+      });
 
   late int index;
   late String hintText;
+  Function() onPressed;
 
   @override
   State<EunKyoungDetailPage> createState() => _EunKyoungDetailPageState();
@@ -30,7 +33,9 @@ class _EunKyoungDetailPageState extends State<EunKyoungDetailPage> {
         backgroundColor: Colors.pink[100],
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: (){
+              widget.onPressed;
+            },
             style: ElevatedButton.styleFrom(
               elevation: 0,
             ),
