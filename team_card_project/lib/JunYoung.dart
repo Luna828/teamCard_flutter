@@ -130,7 +130,6 @@ class JunYoungDetail extends StatelessWidget {
   final int index;
   String type;
   Color? appBarColor;
-
   TextEditingController contentController = TextEditingController();
 
   @override
@@ -138,7 +137,11 @@ class JunYoungDetail extends StatelessWidget {
     DataManager dataManager = context.read<DataManager>();
     Data data = dataManager.dataList[index];
     String word = "";
-
+    contentController.text = type == "MBTI"
+        ? data.mbti
+        : type == "TMI"
+            ? data.tmi
+            : data.comment;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: appBarColor,
