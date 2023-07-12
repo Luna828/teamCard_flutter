@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:team_card_project/DaeHyun.dart';
+import 'package:team_card_project/HanSol.dart';
 import 'package:team_card_project/JunYoung.dart';
 import 'package:team_card_project/EunKyoung.dart';
 import 'GyuYeon.dart';
@@ -137,7 +138,10 @@ class HomePage extends StatelessWidget {
               height: 12,
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => HanSol()));
+                },
                 style: ElevatedButton.styleFrom(
                     fixedSize: const Size(250, 50),
                     backgroundColor: Colors.amber[200]),
