@@ -41,7 +41,7 @@ class _EunKyoungCardPageState extends State<EunKyoungCardPage> {
         body: SingleChildScrollView(
           controller: scrollController,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //이미지 사진 넣는 부분
@@ -77,21 +77,24 @@ class _EunKyoungCardPageState extends State<EunKyoungCardPage> {
 }
 
 Widget myImage(String image) {
-  return Padding(
-    padding: const EdgeInsets.only(top: 20.0),
-    child: Center(
-      child: Container(
-        height: 200,
-        width: 200,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(300),
-          child: Image.network(
-            image,
-            fit: BoxFit.cover,
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(top: 30.0),
+        child: Container(
+          height: 200,
+          width: 200,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(300),
+            child: Image.network(
+              image,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ),
-    ),
+    ],
   );
 }
 
