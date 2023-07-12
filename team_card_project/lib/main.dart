@@ -5,10 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:team_card_project/DaeHyun.dart';
 import 'package:team_card_project/HanSol.dart';
 import 'package:team_card_project/JunYoung.dart';
-import 'package:team_card_project/EunKyoung.dart';
+import 'package:team_card_project/eunkyoung/EunKyoung.dart';
 import 'GyuYeon.dart';
 import "dataManager.dart";
-import 'DaeHyun.dart';
 
 late SharedPreferences prefs;
 
@@ -28,11 +27,15 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
       home: HomePage(),
     );
   }
@@ -67,7 +70,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => EunKyoungCardPage()),
+                    MaterialPageRoute(builder: (_) => EunKyoungCardPage(index: 0)),
                   );
                 },
                 style: ElevatedButton.styleFrom(
