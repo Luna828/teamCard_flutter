@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:team_card_project/dataManager.dart';
 
 import 'main.dart';
 
 class EunKyoungCardPage extends StatefulWidget {
-  const EunKyoungCardPage({super.key});
+  EunKyoungCardPage({super.key, required this.index});
+
+  int index;
 
   @override
   State<EunKyoungCardPage> createState() => _EunKyoungCardPageState();
 }
 
 class _EunKyoungCardPageState extends State<EunKyoungCardPage> {
+
+  late int index;
+
+  @override
+  void initState() {
+    super.initState();
+    index = widget.index;
+  }
+
   @override
   Widget build(BuildContext context) {
     const String MBTI = "MBTI";
@@ -18,30 +31,34 @@ class _EunKyoungCardPageState extends State<EunKyoungCardPage> {
 
     ScrollController scrollController = ScrollController();
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("김은경"),
-        centerTitle: true,
-        backgroundColor: Colors.pink[100],
-      ),
-      body: SingleChildScrollView(
-        controller: scrollController,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //이미지 사진 넣는 부분
-            myImage("https://avatars.githubusercontent.com/u/93186591?v=4"),
-            listTilePadding(MBTI),
-            myListTile("ISFJ", context),
-            listTilePadding(TMI),
-            myListTile("저는 중국에서 스페인어과를 중국어 중ㄱ국어 ㅇㅇㅇㅇㅇ졸업하고 개발시장에 뛰어든 비전공자 입니다! 잘 부탁드려요!", context),
-            listTilePadding(IN_SHORT),
-            myListTile(
-                "dddddddddddddddddd안녕하세요,dddddddddddd dddddddddddddddddddddddd이번 iOS_7기로 합류하게 된 김은경이라고합니다. 4개월동안 취뽀를 위해서 함께 노력해봐요!", context),
-          ],
-        ),
-      ),
+    return Consumer<DataManager>(
+      builder: (context, dataManager, child) {
+        Data data = dataManager.dataList[index];
+        return Scaffold(
+          appBar: AppBar(
+            title: Text("김은경"),
+            centerTitle: true,
+            backgroundColor: Colors.pink[100],
+          ),
+          body: SingleChildScrollView(
+            controller: scrollController,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //이미지 사진 넣는 부분
+                myImage(data.imgUrl),
+                listTilePadding(MBTI),
+                myListTile(data.mbti, context),
+                listTilePadding(TMI),
+                myListTile(data.tmi, context),
+                listTilePadding(IN_SHORT),
+                myListTile(data.comment, context),
+              ],
+            ),
+          ),
+        );
+      }
     );
   }
 }

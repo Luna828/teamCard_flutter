@@ -45,7 +45,7 @@ class DataManager extends ChangeNotifier {
   }
 
   List<Data> dataList = [
-    Data(imgUrl: "", name: "김은경", mbti: "", comment: "", tmi: ""),
+    Data(imgUrl: "https://avatars.githubusercontent.com/u/93186591?v=4", name: "김은경", mbti: "ISFJ", comment: "잘부탁드려요", tmi: "잠을 두시간 자서 죽겠어요.."),
     Data(imgUrl: "", name: "조규연", mbti: "", comment: "", tmi: ""),
     Data(imgUrl: "", name: "이한솔", mbti: "", comment: "", tmi: ""),
     Data(
