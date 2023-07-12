@@ -36,7 +36,7 @@ class _EunKyoungDetailPageState extends State<EunKyoungDetailPage> {
       appBar: AppBar(
         backgroundColor: Colors.pink[100],
         actions: [
-          ElevatedButton(
+          IconButton(
             onPressed: (){
               if(widget.type == "MBTI"){
                 dataManager.updateMbti(index: widget.index, mbti: word);
@@ -50,8 +50,7 @@ class _EunKyoungDetailPageState extends State<EunKyoungDetailPage> {
             style: ElevatedButton.styleFrom(
               elevation: 0,
             ),
-            child: Text('저장',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            icon: Icon(Icons.save),
           ),
         ],
       ),
