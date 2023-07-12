@@ -30,28 +30,27 @@ class JunyoungPage extends StatelessWidget {
           ),
           body: SingleChildScrollView(
             controller: scrollController,
-            child: Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  imageView(data.imgUrl),
-                  SizedBox(height: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      listTitle("MBTI"),
-                      listContent(
-                          data.mbti, context, "MBTI", index, appBarColor),
-                      listTitle("TMi"),
-                      listContent(data.tmi, context, "TMI", index, appBarColor),
-                      listTitle("한마디"),
-                      listContent(
-                          data.comment, context, "한마디", index, appBarColor),
-                    ],
-                  ),
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                imageView(data.imgUrl),
+                SizedBox(height: 30),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    listTitle("MBTI"),
+                    listContent(data.mbti, context, "MBTI", index, appBarColor),
+                    SizedBox(height: 20),
+                    listTitle("TMI"),
+                    listContent(data.tmi, context, "TMI", index, appBarColor),
+                    SizedBox(height: 20),
+                    listTitle("한 마디"),
+                    listContent(
+                        data.comment, context, "한마디", index, appBarColor),
+                  ],
+                ),
+              ],
             ),
           ),
         );
@@ -62,7 +61,7 @@ class JunyoungPage extends StatelessWidget {
 
 Widget imageView(String imgUrl) {
   return Padding(
-    padding: const EdgeInsets.only(top: 20.0),
+    padding: const EdgeInsets.only(top: 30.0),
     child: Center(
       child: Container(
         height: 200,
