@@ -70,7 +70,8 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => EunKyoungCardPage(index: 0)),
+                    MaterialPageRoute(
+                        builder: (_) => EunKyoungCardPage(index: 0)),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -123,8 +124,8 @@ class HomePage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HanSol()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => HanSol(index: 2)));
                 },
                 style: ElevatedButton.styleFrom(
                     fixedSize: const Size(250, 50),
