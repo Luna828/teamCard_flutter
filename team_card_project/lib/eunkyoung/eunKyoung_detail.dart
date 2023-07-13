@@ -4,11 +4,11 @@ import 'package:team_card_project/dataManager.dart';
 
 class EunKyoungDetailPage extends StatefulWidget {
   EunKyoungDetailPage({
-  super.key,
-      required this.index,
-      required this.hintText,
-      required this.type,
-      });
+    super.key,
+    required this.index,
+    required this.hintText,
+    required this.type,
+  });
 
   late int index;
   String type;
@@ -40,7 +40,7 @@ class _EunKyoungDetailPageState extends State<EunKyoungDetailPage> {
             onPressed: (){
               if(widget.type == "MBTI"){
                 dataManager.updateMbti(index: widget.index, mbti: word);
-              } else if(widget.type == "TMI") {
+              } else if (widget.type == "TMI") {
                 dataManager.updateTmi(index: widget.index, tmi: word);
               } else {
                 dataManager.updateComment(index: widget.index, comment: word);
