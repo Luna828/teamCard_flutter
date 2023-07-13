@@ -70,7 +70,6 @@ class DataManager extends ChangeNotifier {
         comment: "반갑습니다. 다함께 열심히 공부해 보고싶습니다!",
         tmi: "자동차 공학부를 전공하였습니다."),
     Data(imgUrl: "", name: "이대현", mbti: "", comment: "", tmi: ""),
-    Data(imgUrl: "", name: "정다올", mbti: "", comment: "", tmi: ""),
   ];
 
   updateMbti({required int index, required String mbti}) {
