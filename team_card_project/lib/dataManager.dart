@@ -57,7 +57,12 @@ class DataManager extends ChangeNotifier {
         mbti: "ISTP",
         comment: "열심히 공부해봅시다!",
         tmi: "노래, 게임 좋아합니다."),
-    Data(imgUrl: "", name: "이한솔", mbti: "", comment: "", tmi: ""),
+    Data(
+        imgUrl: "https://avatars.githubusercontent.com/u/139109343?v=4",
+        name: "이한솔",
+        mbti: "INFJ",
+        comment: "화이팅해요~~",
+        tmi: "산책을 좋아해서 하루에 한시간 이상 꼭 걸어요!!"),
     Data(
         imgUrl: 'https://i.postimg.cc/qqFpMbLP/DSC-1658.jpg',
         name: "서준영",

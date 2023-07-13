@@ -124,8 +124,8 @@ class HomePage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HanSol()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => HanSol(index: 2)));
                 },
                 style: ElevatedButton.styleFrom(
                     fixedSize: const Size(250, 50),
