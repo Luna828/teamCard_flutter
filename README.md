@@ -72,22 +72,8 @@
        </sub>
        <br />
     </td>
-    <td align="center" valign="top" width="14.28%">
-       <a href="https://github.com/jamie615">
-       <img src="https://avatars.githubusercontent.com/u/60419257?v=4" width="100px;" alt="조규연"/>
-       <br />
-         <sub>
-           <b>정다솔</b>
-         </sub>
-       </a>
-       <br />
-       <sub>
-           <b>Flutter Developer</b>
-       </sub>
-       <br />
-    </td>
-      </tbody>
-  </table>
+  </tbody>
+</table>
 
 ### Projects
 - Flutter로 팀 구성원 카드 만들기
