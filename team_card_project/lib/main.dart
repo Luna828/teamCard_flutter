@@ -70,7 +70,8 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => EunKyoungCardPage(index: 0)),
+                    MaterialPageRoute(
+                        builder: (_) => EunKyoungCardPage(index: 0)),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -131,18 +132,6 @@ class HomePage extends StatelessWidget {
                     backgroundColor: Colors.amber[200]),
                 child: Text(
                   '이한솔',
-                  style: TextStyle(color: Colors.black),
-                )),
-            SizedBox(
-              height: 12,
-            ),
-            ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(250, 50),
-                    backgroundColor: Colors.lightGreen[900]),
-                child: Text(
-                  '정다올',
                   style: TextStyle(color: Colors.black),
                 )),
             SizedBox(
